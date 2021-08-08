@@ -8,7 +8,7 @@ assembly = sys.stdin.read()
 # process each line of assembly
 lines_assembly = assembly.split("\r\n")
 
-parsed = [parser(i) for i in lines_assembly]
+parsed = [parser(i.strip()) for i in lines_assembly]
 
 ## if non_binary in parsed: print error
 ## else: create for loop and print binaries
