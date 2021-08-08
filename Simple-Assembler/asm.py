@@ -6,7 +6,7 @@ from assets import parser
 assembly = sys.stdin.read()
 
 # process each line of assembly
-lines_assembly = assembly.split('\r\n')
+lines_assembly = assembly.split("\r\n")
 
 parsed = [parser(i) for i in lines_assembly]
 
