@@ -1,7 +1,7 @@
-def Lshift(str_in):
-
+def Rshift(str_in):
+    
     arr = str_in.split()
-    output = '01001' 
+    output = '01000' 
     err = ''
 
     register = {'R0':'000',
@@ -47,6 +47,6 @@ def Lshift(str_in):
         return err
 
 # TEST
-# s_in = "ls R1 $10"
-# print(Lshift(s_in))
-# output = 01001 001 1010
+# s_in = "rs R1 $10"
+# print(Rshift(s_in))
+# output = 01000 001 1010
