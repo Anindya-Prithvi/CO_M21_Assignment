@@ -39,7 +39,7 @@ def Rshift(str_in):
         else:
             err = "ERROR:INVALID IMMIDIATE INPUT"
             return err
-        
+        output = output + "0000"
         return output
     
     else:
@@ -49,4 +49,4 @@ def Rshift(str_in):
 # TEST
 # s_in = "rs R1 $10"
 # print(Rshift(s_in))
-# output = 01000 001 1010
+# output = 01000 001 1010 0000
