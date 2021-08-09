@@ -34,7 +34,7 @@ def XOR(str_in):
         else:
             err = "ERROR:INVALID REGISTER CODE"
             return err
-        
+        output = output + "00"
         return output
     
     else:
@@ -44,4 +44,4 @@ def XOR(str_in):
 # TEST
 # s_in = "xor R1 R2 R3"
 # print(XOR(s_in))
-# output = 01010 001 010 011
+# output = 01010 001 010 011 00
