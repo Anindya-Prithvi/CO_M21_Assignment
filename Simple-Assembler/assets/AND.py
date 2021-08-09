@@ -1,7 +1,7 @@
-def OR(str_in):
+def AND(str_in):
 
     arr = str_in.split()
-    output = "01011"
+    output = "01100"
     err = ""
 
     register = {
@@ -44,6 +44,6 @@ def OR(str_in):
 
 
 # TEST
-# s_in = "or R1 R2 R3"
-# print(OR(s_in))
-# output = 01011 001 010 011 00
+# s_in = "and R1 R2 R3"
+# print(AND(s_in))
+# output = 01100 001 010 011 00
