@@ -39,7 +39,7 @@ def Lshift(str_in):
         else:
             err = "ERROR:INVALID IMMIDIATE INPUT"
             return err
-        
+        output = output + "0000"
         return output
     
     else:
@@ -49,4 +49,5 @@ def Lshift(str_in):
 # TEST
 # s_in = "ls R1 $10"
 # print(Lshift(s_in))
-# output = 01001 001 1010
+# output = 01001 001 1010 0000
+

@@ -1,7 +1,7 @@
-def XOR(str_in):
+def Invert(str_in):
     
     arr = str_in.split()
-    output = '01010' 
+    output = '01101' 
     err = ''
 
     register = {'R0':'000',
@@ -16,7 +16,7 @@ def XOR(str_in):
 
     rlist = ['R0','R1','R2','R3','R4','R5','R6']
 
-    if len(arr) == 4:
+    if len(arr) == 3:
         if arr[1] in rlist:
             output = output + register.get(arr[1])
         else:
@@ -28,13 +28,7 @@ def XOR(str_in):
         else:
             err = "ERROR:INVALID REGISTER CODE"
             return err
-
-        if arr[3] in rlist:
-            output = output + register.get(arr[3])
-        else:
-            err = "ERROR:INVALID REGISTER CODE"
-            return err
-        output = output + "00"
+        
         return output
     
     else:
@@ -42,6 +36,6 @@ def XOR(str_in):
         return err
 
 # TEST
-# s_in = "xor R1 R2 R3"
-# print(XOR(s_in))
-# output = 01010 001 010 011 00
+s_in = "not R1 R2"
+print(Invert(s_in))
+# output = 01101 001 010

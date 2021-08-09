@@ -1,7 +1,7 @@
-def XOR(str_in):
+def AND(str_in):
     
     arr = str_in.split()
-    output = '01010' 
+    output = '01100' 
     err = ''
 
     register = {'R0':'000',
@@ -42,6 +42,6 @@ def XOR(str_in):
         return err
 
 # TEST
-# s_in = "xor R1 R2 R3"
-# print(XOR(s_in))
-# output = 01010 001 010 011 00
+# s_in = "and R1 R2 R3"
+# print(AND(s_in))
+# output = 01100 001 010 011 00
