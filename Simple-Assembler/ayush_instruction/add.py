@@ -27,5 +27,5 @@ def add (add_instruction):
                        
 
 
-instruct="add R1 R2 R3"
-print(add(instruct))
+# instruct="add R1 R2 R3"
+# print(add(instruct))
