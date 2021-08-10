@@ -8,6 +8,8 @@ def mul (mul_instruction):
                 'R6':'110',
                 }
     list=mul_instruction.split(" ")
+    if (len(list)<4):
+        return "ERROR:INCOMPLETE INSTRUCTION"
     if list[0]!="mul":
         return "ERROR:ILLEGAL ARGUMENT"
     else:
