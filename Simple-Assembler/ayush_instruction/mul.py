@@ -27,5 +27,5 @@ def mul (mul_instruction):
                        
 
 
-instruct="mul R3 R1 R2"
-print(mul(instruct))
+# instruct="mul R3 R1 R2"
+# print(mul(instruct))
