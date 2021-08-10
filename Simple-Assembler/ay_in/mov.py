@@ -8,6 +8,8 @@ def mov(mov_instruction):
                 'R6':'110',
                 }
     list = mov_instruction.split(" ")
+    if (len(list)<3):
+        return "ERROR:INCOMPLETE INSTRUCTION"
     if list[0]!="mov":
         return "ERROR:ILLEGAL ARGUMENT";
     if list[2] in register:
