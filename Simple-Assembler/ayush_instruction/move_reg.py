@@ -27,5 +27,5 @@ def mov_reg (reg_instruction):
                        
 
 
-instruct="mov R1 R2"
-print(mov_reg(instruct))
+# instruct="mov R1 R2"
+# print(mov_reg(instruct))
