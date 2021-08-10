@@ -27,5 +27,5 @@ def div (div_instruction):
                        
 
 
-instruct="div R1 R2"
-print(div(instruct))
+# instruct="div R1 R2"
+# print(div(instruct))
