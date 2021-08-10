@@ -28,5 +28,5 @@ def imm (imm_instruction,num):
                        
 
 
-instruct="mov R1"
-print(imm(instruct,1))
+# instruct="mov R1"
+# print(imm(instruct,1))
