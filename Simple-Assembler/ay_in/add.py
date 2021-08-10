@@ -8,6 +8,8 @@ def add (add_instruction):
                 'R6':'110',
                 }
     list=add_instruction.split(" ")
+    if (len(list)<4):
+        return "ERROR:INCOMPLETE INSTRUCTION"
     if list[0]!="add":
         return "ERROR:ILLEGAL ARGUMENT";
     else:
