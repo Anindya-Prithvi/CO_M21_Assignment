@@ -32,7 +32,10 @@ def Rshift(str_in):
 
             if imm in range(256):
                 imm_bin = str(bin(imm))
-                output = output + imm_bin[2 : len(imm_bin)]
+                imm_bin = imm_bin[2 : len(imm_bin)]
+                if len(imm_bin) < 8:
+                    imm_bin = (8-len(imm_bin))*"0"+imm_bin
+                output = output + imm_bin
             else:
                 err = "ERROR:IMMIDIATE OUT OF BOUND"
                 return err
@@ -40,7 +43,7 @@ def Rshift(str_in):
         else:
             err = "ERROR:INVALID IMMIDIATE INPUT"
             return err
-        output = output + "0000"
+        
         return output
 
     else:
@@ -49,6 +52,7 @@ def Rshift(str_in):
 
 
 # TEST
-# s_in = "rs R1 $10"
-# print(Rshift(s_in))
+s_in = "rs R1 $10"
+op = Rshift(s_in)
+print(len(op),"  ",op)
 # output = 01000 001 1010 0000

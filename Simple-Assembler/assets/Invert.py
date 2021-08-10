@@ -29,7 +29,7 @@ def Invert(str_in):
         else:
             err = "ERROR:INVALID REGISTER CODE"
             return err
-
+        output = output + "00000"
         return output
 
     else:
@@ -38,6 +38,6 @@ def Invert(str_in):
 
 
 # TEST
-s_in = "not R1 R2"
-print(Invert(s_in))
-# output = 01101 001 010
+# s_in = "not R1 R2"
+# print(Invert(s_in))
+# output = 01101 001 010 00000
