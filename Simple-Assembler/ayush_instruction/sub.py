@@ -27,5 +27,5 @@ def sub (sub_instruction):
                        
 
 
-instruct="sub R1 R2 R3"
-print(sub(instruct))
+# instruct="sub R1 R2 R3"
+# print(sub(instruct))
