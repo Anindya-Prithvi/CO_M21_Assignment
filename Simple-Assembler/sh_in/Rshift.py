@@ -52,7 +52,7 @@ def Rshift(str_in):
 
 
 # TEST
-s_in = "rs R1 $10"
-op = Rshift(s_in)
-print(len(op),"  ",op)
+#s_in = "rs R1 $10"
+#op = Rshift(s_in)
+#print(len(op),"  ",op)
 # output = 01000 001 1010 0000

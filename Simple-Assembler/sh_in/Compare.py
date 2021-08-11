@@ -38,6 +38,6 @@ def Compare(str_in):
 
 
 # TEST
-s_in = "cmp R1 R2"
-print(Compare(s_in))
+#s_in = "cmp R1 R2"
+#print(Compare(s_in))
 # output = 01101 001 010 00000
