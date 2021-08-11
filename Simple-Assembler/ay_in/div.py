@@ -8,6 +8,8 @@ def div (div_instruction):
                 'R6':'110',
                 }
     list=div_instruction.split(" ")
+    if (len(list)<3):
+        return "ERROR:INCOMPLETE INSTRUCTION"
     if list[0]!="div":
         return "ERROR:ILLEGAL ARGUMENT"
     else:

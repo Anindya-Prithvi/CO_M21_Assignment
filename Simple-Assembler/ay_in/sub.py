@@ -8,6 +8,8 @@ def sub (sub_instruction):
                 'R6':'110',
                 }
     list=sub_instruction.split(" ")
+    if (len(list)<4):
+        return "ERROR:INCOMPLETE INSTRUCTION"
     if list[0]!="sub":
         return "ERROR:ILLEGAL ARGUMENT"
     else:
