@@ -1,7 +1,7 @@
 # Parser for A,B,C,D,E,F
 
 from sh_in import AND, Compare, Invert, Lshift, OR, Rshift, XOR
-from ay_in import add, div, sub, mul
+from ay_in import add, div, sub, mul, mov
 
 
 def parser(string):
@@ -20,8 +20,8 @@ def parser(string):
         parsed_string = mul(string)
     elif op == "div":
         parsed_string = div(string)
-    #elif op == "mov":
-    #    parsed_string = mov(string)
+    elif op == "mov":
+        parsed_string = mov(string)
     elif op == "and":
         parsed_string = AND(string)
     elif op == "cmp":

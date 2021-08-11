@@ -52,7 +52,7 @@ def Lshift(str_in):
 
 
 # TEST
-s_in = "ls R1 $0"
-print(Lshift(s_in))
+#s_in = "ls R1 $0"
+#print(Lshift(s_in))
 # output = 01001 001 1010 0000
 # corrected issue with 8 bits

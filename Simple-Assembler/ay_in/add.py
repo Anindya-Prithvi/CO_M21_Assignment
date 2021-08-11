@@ -9,7 +9,7 @@ def add (add_instruction):
                 }
     list=add_instruction.split(" ")
     if (len(list)<4):
-        return "ERROR:INCOMPLETE INSTRUCTION"
+        return "ERROR:INCOMPLETE INSTRUCTION/ WRONG ARGUMENT"
     if list[0]!="add":
         return "ERROR:ILLEGAL ARGUMENT";
     else:
