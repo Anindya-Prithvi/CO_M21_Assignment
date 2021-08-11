@@ -8,8 +8,6 @@ def mov(mov_instruction):
                 'R6':'110',
                 }
     list = mov_instruction.split(" ")
-    if (len(list)<3):
-        return "ERROR:INCOMPLETE INSTRUCTION"
     if list[0]!="mov":
         return "ERROR:ILLEGAL ARGUMENT";
     if list[2] in register:
@@ -31,22 +29,25 @@ def mov(mov_instruction):
         c=0
         bin_string="00010"
         list[2]=list[2][1:]
-        num = int (list[2])
-        for i in register:
-            if i==list[1]:
-                bin_string=bin_string+register[i]
-                c=0
-                break
-            else:
-                c=1
-        if c==1:
-            return "ERROR:INVALID REGISTER CODE"
+        try:
+            num = int (list[2])
+            for i in register:
+                if i==list[1]:
+                    bin_string=bin_string+register[i]
+                    c=0
+                    break
+                else:
+                    c=1
+            if c==1:
+                return "ERROR:INVALID REGISTER CODE"
+            bin_string=bin_string+format(num,'08b')  
+            return bin_string
+        except:
+            return ("ERROR: THIS INSTRUCTION ONLY TAKES INT VALUE")  
 
-    bin_string=bin_string+format(num,'08b')    
-    return bin_string
-
-# instruct="mov R1 $1"
+# instruct="mov R1 $a"
 # print(mov(instruct))
 
 # instruct="mov R1 R2"
 # print(mov(instruct))
+
