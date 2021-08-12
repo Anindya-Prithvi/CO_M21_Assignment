@@ -24,7 +24,6 @@ lines_assembly = assembly.split("\n")
 # ignore blank lines
 proc1 = [l for l in lines_assembly if not re.match("^\s*$", l)]
 
-lno = -1
 while True:
 	if proc1==[]: break
 	if proc1[0].split()[0]=="var":
@@ -47,8 +46,20 @@ for i in variables:
 
 #all variables now have address
 
-
 #now process for labels
+labels=[]
+
+def labelproc(string):
+	#here string is always a valid label
+	labels.append([string[:string.index(":")], proc1.index(string)])
+	ninst = string[string.index(":"):].lstrip(":")
+	proc1[proc1.index(string)] = ninst
+
+
+
+for i in proc1:
+	if re.match("\s*[A-Za-z0-9_]+:.*",i):
+		labelproc(i)
 
 
 
@@ -62,3 +73,5 @@ parsed = [parser(i.strip()) for i in proc1]
 ## else: create for loop and print binaries
 
 print("\n".join(parsed))
+print(*labels)
+print(*variables)
