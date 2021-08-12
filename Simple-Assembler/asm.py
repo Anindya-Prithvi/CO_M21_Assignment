@@ -93,10 +93,14 @@ if run:
 
 if run:
 	parsed = [parser(i.strip()) for i in proc1]
+	for i, e in enumerate(parsed):
+		if e[0]!="0" and e[0]!="1":
+			print(f"ln: {lines_assembly.index(proc1[i])+1} " + e)
+			run = False
+			break
 
 	## if non_binary in parsed: print error
 	## else: create for loop and print binaries
 
+if run:
 	print("\n".join(parsed))
-	print(*labels)
-	print(*variables)

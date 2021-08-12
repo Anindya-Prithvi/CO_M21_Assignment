@@ -13,7 +13,9 @@ def parser(string):
         return "ERROR: LABEL WAS NOT FOLLOWED BY AN INSTRUCTION"
     op = break_string[0]
 
-    if op ==   "add":
+    if op ==   "hlt":
+        return "1001100000000000"
+    elif op ==   "add":
         parsed_string = add(string)
     elif op == "sub":
         parsed_string = sub(string)
