@@ -7,7 +7,7 @@ def add (add_instruction):
                 'R5':'101',
                 'R6':'110',
                 }
-    list=add_instruction.split(" ")
+    list=add_instruction.split()
     if (len(list)<4):
         return "ERROR:INCOMPLETE INSTRUCTION/ WRONG ARGUMENT"
     if list[0]!="add":
