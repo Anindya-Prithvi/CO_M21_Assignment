@@ -129,13 +129,13 @@ if run:
     hlts = [l for l in lines_assembly if re.match("\s*hlt\s*", l)]
     if len(hlts) > 1:
         print(
-            f"ln: {lines_assembly.index(hlts[0])+1} ERROR: MULTIPLE HALT INSTRUCTIONS IN STDIN"
+            f"ln: {lines_assembly.index(hlts[0])+1} --> ERROR: MULTIPLE HALT INSTRUCTIONS IN STDIN"
         )
         run = False
     if len(hlts) == 1:
         if proc1.index(hlts[0]) != len(proc1) - 1:
             print(
-                f"ln: {lines_assembly.index(hlts[0])+1} ERROR: HALT IS NOT LAST INSTRUCTION"
+                f"ln: {lines_assembly.index(hlts[0])+1} --> ERROR: HALT IS NOT LAST INSTRUCTION"
             )
             run = False
         else:
@@ -145,7 +145,7 @@ if run:
     parsed = [parser(i.strip(), labels, variables) for i in proc1]
     for i, e in enumerate(parsed):
         if e[0] != "0" and e[0] != "1":
-            print(f"ln: {lines_assembly.index(proc1[i])+1} " + e)
+            print(f"ln: {lines_assembly.index(proc1[i])+1} --> " + e)
             run = False
             break
     if parsed[-1] != "1001100000000000":
