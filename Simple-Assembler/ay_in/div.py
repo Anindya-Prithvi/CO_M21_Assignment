@@ -7,7 +7,7 @@ def div (div_instruction):
                 'R5':'101',
                 'R6':'110',
                 }
-    list=div_instruction.split(" ")
+    list=div_instruction.split()
     if (len(list)<3):
         return "ERROR:INCOMPLETE INSTRUCTION"
     if list[0]!="div":
