@@ -6,6 +6,7 @@ def mov(mov_instruction):
                 'R4':'100',
                 'R5':'101',
                 'R6':'110',
+                'FLAGS':'111'
                 }
     list = mov_instruction.split()
     if list[0]!="mov":
@@ -43,7 +44,7 @@ def mov(mov_instruction):
             bin_string=bin_string+format(num,'08b')  
             return bin_string
         except:
-            return ("ERROR: THIS INSTRUCTION ONLY TAKES INT VALUE")  
+            return ("ERROR: THIS INSTRUCTION ONLY TAKES INT/REG")  
 
 # instruct="mov R1 $a"
 # print(mov(instruct))

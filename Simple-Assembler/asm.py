@@ -81,9 +81,6 @@ if run:
 	if len(hlts)>1:
 		print(f"ln: {lines_assembly.index(hlts[0])+1} ERROR: MULTIPLE HALT INSTRUCTIONS IN STDIN")
 		run = False
-	if len(hlts)==0:
-		print("ln: xx ERROR: HALT INSTRUCTION NOT FOUND")
-		run = False
 	if len(hlts)==1:
 		if proc1.index(hlts[0])!=len(proc1)-1:
 			print(f"ln: {lines_assembly.index(hlts[0])+1} ERROR: HALT IS NOT LAST INSTRUCTION")
@@ -92,12 +89,14 @@ if run:
 			pass
 
 if run:
-	parsed = [parser(i.strip()) for i in proc1]
+	parsed = [parser(i.strip(), labels, variables) for i in proc1]
 	for i, e in enumerate(parsed):
 		if e[0]!="0" and e[0]!="1":
 			print(f"ln: {lines_assembly.index(proc1[i])+1} " + e)
 			run = False
 			break
+	if parsed[-1]!="1001100000000000":
+		print("ln: xx ERROR: HALT INSTRUCTION NOT FOUND")
 
 	## if non_binary in parsed: print error
 	## else: create for loop and print binaries
