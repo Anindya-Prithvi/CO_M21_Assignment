@@ -1,32 +1,32 @@
-def mul (mul_instruction):
-    register = {'R0':'000',
-                'R1':'001',
-                'R2':'010',
-                'R3':'011',
-                'R4':'100',
-                'R5':'101',
-                'R6':'110',
-                }
-    list=mul_instruction.split()
-    if (len(list)<4):
+def mul(mul_instruction):
+    register = {
+        "R0": "000",
+        "R1": "001",
+        "R2": "010",
+        "R3": "011",
+        "R4": "100",
+        "R5": "101",
+        "R6": "110",
+    }
+    list = mul_instruction.split()
+    if len(list) < 4:
         return "ERROR:INCOMPLETE INSTRUCTION"
-    if list[0]!="mul":
+    if list[0] != "mul":
         return "ERROR:ILLEGAL ARGUMENT"
     else:
-        c=0
-        bin_string="0011000"
-        for j in range(1,4):
+        c = 0
+        bin_string = "0011000"
+        for j in range(1, 4):
             for i in register:
-                if i==list[j]:
-                    bin_string=bin_string+register[i]
-                    c=0
+                if i == list[j]:
+                    bin_string = bin_string + register[i]
+                    c = 0
                     break
                 else:
-                    c=1
-            if c==1:
+                    c = 1
+            if c == 1:
                 return "ERROR:INVALID REGISTER CODE"
         return bin_string
-                       
 
 
 # instruct="mul R3 R1 R2"

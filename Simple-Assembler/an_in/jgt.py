@@ -1,4 +1,5 @@
-#jgt
+# jgt
+
 
 def jgt(string, labels):
 
@@ -6,7 +7,7 @@ def jgt(string, labels):
     output = "10001"
     err = ""
 
-    lbdct = {i[0]:i[1] for i in labels}
+    lbdct = {i[0]: i[1] for i in labels}
 
     if len(arr) == 2:
         output = output + "000"

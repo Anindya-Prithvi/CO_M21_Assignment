@@ -4,7 +4,7 @@
 def st(string, variables):
     # st reg1 mem_addr
 
-    vdct = {i[0]:i[1] for i in variables}
+    vdct = {i[0]: i[1] for i in variables}
 
     arr = string.split()
     output = "00101"

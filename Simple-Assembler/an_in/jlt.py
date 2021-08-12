@@ -1,4 +1,5 @@
-#jlt
+# jlt
+
 
 def jlt(string, labels):
 
@@ -6,17 +7,17 @@ def jlt(string, labels):
     output = "10000"
     err = ""
 
-    lbdct = {i[0]:i[1] for i in labels}
+    lbdct = {i[0]: i[1] for i in labels}
 
     if len(arr) == 2:
         output = output + "000"
         if lbdct.get(arr[1]):
-        	mem = lbdct.get(arr[1])
-        	output = output + bin(mem)[2:].zfill(8)
-        	return output
+            mem = lbdct.get(arr[1])
+            output = output + bin(mem)[2:].zfill(8)
+            return output
         else:
-        	err = "ERROR: LABEL WAS NOT FOUND"
-        	return err
+            err = "ERROR: LABEL WAS NOT FOUND"
+            return err
 
     else:
         err = "ERROR: INVALID NUMBER OF ARGUMENTS"
