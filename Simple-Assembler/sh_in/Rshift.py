@@ -19,12 +19,12 @@ def Rshift(str_in):
 
     if len(arr) == 3:
         if arr[1] == 'FLAGS':
-            err = "ERROR:INVALID USE OF FLAGS"
+            err = "ERROR: INVALID USE OF FLAGS"
             return err
         if arr[1] in rlist:
             output = output + register.get(arr[1])
         else:
-            err = "ERROR:INVALID REGISTER CODE"
+            err = "ERROR: INVALID REGISTER CODE"
             return err
 
         imm = arr[2]
@@ -40,17 +40,17 @@ def Rshift(str_in):
                     imm_bin = (8 - len(imm_bin)) * "0" + imm_bin
                 output = output + imm_bin
             else:
-                err = "ERROR:IMMIDIATE OUT OF BOUND"
+                err = "ERROR: IMMIDIATE OUT OF BOUND"
                 return err
 
         else:
-            err = "ERROR:INVALID IMMIDIATE INPUT"
+            err = "ERROR: INVALID IMMIDIATE INPUT"
             return err
 
         return output
 
     else:
-        err = "ERROR:INVALID NUMBER OF ARGUMENTS"
+        err = "ERROR: INVALID NUMBER OF ARGUMENTS"
         return err
 
 
