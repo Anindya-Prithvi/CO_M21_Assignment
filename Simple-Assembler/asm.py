@@ -51,15 +51,20 @@ labels=[]
 
 def labelproc(string):
 	#here string is always a valid label
-	labels.append([string[:string.index(":")], proc1.index(string)])
+
+	if string[:string.index(":")].strip() in {"add","sub","mov","ld","st","mul","div","rs","ls","xor","or","and","not","cmp","jmp","jlt","jgt","je","hlt"}:
+		return "ERROR: LABEL NAME SAME AS MNENOMIC"
+	labels.append([string[:string.index(":")].strip(), proc1.index(string)])
 	ninst = string[string.index(":"):].lstrip(":")
 	proc1[proc1.index(string)] = ninst
+	return None
 
 
 
 for i in proc1:
 	if re.match("\s*[A-Za-z0-9_]+:.*",i):
-		labelproc(i)
+		if (e:=labelproc(i)) is not None:
+			print(f"ln: {lines_assembly.index(i)} --> " + e)
 
 
 

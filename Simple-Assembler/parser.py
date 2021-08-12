@@ -38,6 +38,6 @@ def parser(string):
     elif op == "xor":
         parsed_string = XOR(string)
     else:
-        parsed_string = "ERROR: WRONG KEYWORD in " + string
+        parsed_string = "ERROR: WRONG MNENOMIC in " + string
 
     return parsed_string
