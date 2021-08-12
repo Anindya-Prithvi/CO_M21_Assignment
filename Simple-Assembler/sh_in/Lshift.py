@@ -18,6 +18,9 @@ def Lshift(str_in):
     rlist = ["R0", "R1", "R2", "R3", "R4", "R5", "R6"]
 
     if len(arr) == 3:
+        if arr[1] == 'FLAGS':
+            err = "ERROR:INVALID USE OF FLAGS"
+            return err
         if arr[1] in rlist:
             output = output + register.get(arr[1])
         else:
@@ -52,7 +55,7 @@ def Lshift(str_in):
 
 
 # TEST
-#s_in = "ls R1 $0"
-#print(Lshift(s_in))
+# s_in = "ls R1 $0"
+# print(Lshift(s_in))
 # output = 01001 001 1010 0000
 # corrected issue with 8 bits
