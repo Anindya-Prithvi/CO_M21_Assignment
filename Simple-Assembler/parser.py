@@ -9,7 +9,8 @@ def parser(string):
     parsed_string = ""
 
     break_string = string.split()
-
+    if break_string==[]:
+        return "ERROR: LABEL WAS NOT FOLLOWED BY AN INSTRUCTION"
     op = break_string[0]
 
     if op ==   "add":
