@@ -19,35 +19,35 @@ def AND(str_in):
 
     if len(arr) == 4:
         if arr[1] == 'FLAGS':
-            err = "ERROR:INVALID USE OF FLAGS"
+            err = "ERROR: INVALID USE OF FLAGS"
             return err
         if arr[1] in rlist:
             output = output + register.get(arr[1])
         else:
-            err = "ERROR:INVALID REGISTER CODE"
+            err = "ERROR: INVALID REGISTER CODE"
             return err
         if arr[2] == 'FLAGS':
-            err = "ERROR:INVALID USE OF FLAGS"
+            err = "ERROR: INVALID USE OF FLAGS"
             return err
 
         if arr[2] in rlist:
             output = output + register.get(arr[2])
         else:
-            err = "ERROR:INVALID REGISTER CODE"
+            err = "ERROR: INVALID REGISTER CODE"
             return err
         if arr[3] == 'FLAGS':
-            err = "ERROR:INVALID USE OF FLAGS"
+            err = "ERROR: INVALID USE OF FLAGS"
             return err
         if arr[3] in rlist:
             output = output + register.get(arr[3])
         else:
-            err = "ERROR:INVALID REGISTER CODE"
+            err = "ERROR: INVALID REGISTER CODE"
             return err
         output = output + "00"
         return output
 
     else:
-        err = "ERROR:INVALID NUMBER OF ARGUMENTS"
+        err = "ERROR: INVALID NUMBER OF ARGUMENTS"
         return err
 
 
