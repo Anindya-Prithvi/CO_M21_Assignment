@@ -1,3 +1,4 @@
 #!/bin/bash
 # Add command to run your program here
+#python3 Simple-Assembler/asm.py $@
 python3 asm.py $@
