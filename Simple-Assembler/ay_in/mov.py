@@ -7,7 +7,7 @@ def mov(mov_instruction):
                 'R5':'101',
                 'R6':'110',
                 }
-    list = mov_instruction.split(" ")
+    list = mov_instruction.split()
     if list[0]!="mov":
         return "ERROR:ILLEGAL ARGUMENT";
     if list[2] in register:
