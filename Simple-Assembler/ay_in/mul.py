@@ -7,7 +7,7 @@ def mul (mul_instruction):
                 'R5':'101',
                 'R6':'110',
                 }
-    list=mul_instruction.split(" ")
+    list=mul_instruction.split()
     if (len(list)<4):
         return "ERROR:INCOMPLETE INSTRUCTION"
     if list[0]!="mul":
