@@ -1,12 +1,13 @@
-#jmp
+# jmp
+
 
 def jmp(string, labels):
 
     arr = string.split()
     output = "01111"
     err = ""
-    
-    lbdct = {i[0]:i[1] for i in labels}
+
+    lbdct = {i[0]: i[1] for i in labels}
 
     if len(arr) == 2:
         output = output + "000"

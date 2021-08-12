@@ -1,8 +1,8 @@
 # Parser for A,B,C,D,E,F
 
-from sh_in import AND, Compare, Invert, Lshift, OR, Rshift, XOR
-from ay_in import add, div, sub, mul, mov
-from an_in import jgt, ld, st, jmp, jlt, je
+from an_in import je, jgt, jlt, jmp, ld, st
+from ay_in import add, div, mov, mul, sub
+from sh_in import AND, OR, XOR, Compare, Invert, Lshift, Rshift
 
 
 def parser(string, labels, variables):
@@ -10,11 +10,11 @@ def parser(string, labels, variables):
     parsed_string = ""
 
     break_string = string.split()
-    if break_string==[]:
+    if break_string == []:
         return "ERROR: LABEL WAS NOT FOLLOWED BY AN INSTRUCTION"
     op = break_string[0]
 
-    if op ==   "hlt":
+    if op == "hlt":
         return "1001100000000000"
     elif op == "add":
         parsed_string = add(string)

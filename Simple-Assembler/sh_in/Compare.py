@@ -19,8 +19,8 @@ def Compare(str_in):
     rlist = ["R0", "R1", "R2", "R3", "R4", "R5", "R6"]
 
     if len(arr) == 3:
-        
-        if arr[1] == 'FLAGS':
+
+        if arr[1] == "FLAGS":
             err = "ERROR:INVALID USE OF FLAGS"
             return err
         if arr[1] in rlist:
@@ -28,7 +28,7 @@ def Compare(str_in):
         else:
             err = "ERROR:INVALID REGISTER CODE"
             return err
-        if arr[2] == 'FLAGS':
+        if arr[2] == "FLAGS":
             err = "ERROR:INVALID USE OF FLAGS"
             return err
         if arr[2] in rlist:
@@ -36,7 +36,7 @@ def Compare(str_in):
         else:
             err = "ERROR:INVALID REGISTER CODE"
             return err
-        
+
         return output
 
     else:
@@ -47,4 +47,4 @@ def Compare(str_in):
 # TEST
 # s_in = "cmp R1 R2"
 # print(Compare(s_in))
-# output = 01110 00000 001 010 
+# output = 01110 00000 001 010
