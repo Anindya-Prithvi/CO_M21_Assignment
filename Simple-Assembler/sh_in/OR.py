@@ -18,18 +18,25 @@ def OR(str_in):
     rlist = ["R0", "R1", "R2", "R3", "R4", "R5", "R6"]
 
     if len(arr) == 4:
+        if arr[1] == 'FLAGS':
+            err = "ERROR:INVALID USE OF FLAGS"
+            return err
         if arr[1] in rlist:
             output = output + register.get(arr[1])
         else:
             err = "ERROR:INVALID REGISTER CODE"
             return err
-
+        if arr[2] == 'FLAGS':
+            err = "ERROR:INVALID USE OF FLAGS"
+            return err
         if arr[2] in rlist:
             output = output + register.get(arr[2])
         else:
             err = "ERROR:INVALID REGISTER CODE"
             return err
-
+        if arr[3] == 'FLAGS':
+            err = "ERROR:INVALID USE OF FLAGS"
+            return err
         if arr[3] in rlist:
             output = output + register.get(arr[3])
         else:

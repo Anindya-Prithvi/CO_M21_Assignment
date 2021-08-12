@@ -18,6 +18,9 @@ def Rshift(str_in):
     rlist = ["R0", "R1", "R2", "R3", "R4", "R5", "R6"]
 
     if len(arr) == 3:
+        if arr[1] == 'FLAGS':
+            err = "ERROR:INVALID USE OF FLAGS"
+            return err
         if arr[1] in rlist:
             output = output + register.get(arr[1])
         else:
@@ -54,5 +57,5 @@ def Rshift(str_in):
 # TEST
 # s_in = "rs R1 $10"
 # op = Rshift(s_in)
-# print(len(op),"  ",op)
+# print(op)
 # output = 01000 001 1010 0000
