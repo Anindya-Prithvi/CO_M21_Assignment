@@ -1,27 +1,62 @@
 import sys
+import re
 from parser import parser
+
+variables = []
+def varproc(string):
+	inst = string.split()
+	if not (len(inst)==2): return "ERROR: INVALID VARIABLE DECLARATION"
+	#first part of string has var
+	if re.match(".*[^A-Za-z0-9_]+",inst[1]): return "ERROR: INVALID VARIABLE NAME"
+	#second needs to be regexed
+	#append to variable storage(address after instruction mem is made)
+	variables.append([inst[1],0]) #stored variable (not addressed)
+	return None
 
 # files have been read to input stream using < command
 # hence using stdin.read to read the whole stream together
 assembly = sys.stdin.read()
 
+
 # process each line of assembly
 lines_assembly = assembly.split("\n")
 
-proc1 = [i.split() for i in lines_assembly]
+# ignore blank lines
+proc1 = [l for l in lines_assembly if not re.match("^\s*$", l)]
 
-while [] in proc1:
-	proc1.remove([])
+lno = -1
+while True:
+	if proc1==[]: break
+	if proc1[0].split()[0]=="var":
+		if (e:=varproc(ln:=proc1.pop(0))) is not None:
+			print(f"ln: {lines_assembly.index(ln)} --> " + e)
+			break
+	else:
+		break
 
-clean_inst = [" ".join(i) for i in proc1]
+#now proc1 is free of variables (hopefully)
+if any((j:=re.match("\s*var.*",i)) for i in proc1):
+	print(f"ln: {lines_assembly.index(j.string)} --> " + "ERROR: VARIABLE NOT DECLARED AT START")
 
-#print("\n".join(clean_inst))
+#guaranteed proc1 only has instructions
+
+inst_len = len(proc1)
+for i in variables:
+	i[1] = inst_len
+	inst_len+=1
+
+#all variables now have address
+
+
+#now process for labels
+
+
 
 # WHEN PRINTING ERROR, GET THE LINE NUMBER, proc1.index(the_string.split())
 # process vars, delete empty allocate instruction memory, alocate
 # variable in memory
 
-parsed = [parser(i.strip()) for i in clean_inst]
+parsed = [parser(i.strip()) for i in proc1]
 
 ## if non_binary in parsed: print error
 ## else: create for loop and print binaries
