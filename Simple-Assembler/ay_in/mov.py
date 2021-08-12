@@ -13,7 +13,7 @@ def mov(mov_instruction):
         return "ERROR:ILLEGAL ARGUMENT";
     if list[2] in register:
         c=0
-        bin_string = "0011100000"
+        bin_string = "0001100000"
         for j in range(1,3):
             for i in register:
                 if i==list[j]:
