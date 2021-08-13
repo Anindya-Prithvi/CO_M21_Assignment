@@ -85,6 +85,8 @@ for i in variables:
 labels = []
 
 proc1l = proc1.copy()
+
+
 def labelproc(string):
     # here string is always a valid label
 
@@ -112,7 +114,8 @@ def labelproc(string):
         return "ERROR: LABEL NAME SAME AS MNENOMIC"
     labels.append([string[: string.index(":")].strip(), proc1.index(string)])
 
-    if len(set([i[0] for i in labels]))!=len([i[0] for i in labels]): return "ERROR: MULTIPLE SAME NAME LABEL DECLARATION FOUND"
+    if len(set([i[0] for i in labels])) != len([i[0] for i in labels]):
+        return "ERROR: MULTIPLE SAME NAME LABEL DECLARATION FOUND"
 
     ninst = string[string.index(":") :].lstrip(":")
     proc1l[proc1.index(string)] = ninst
