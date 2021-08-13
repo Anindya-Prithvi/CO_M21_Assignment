@@ -1,0 +1,3 @@
+label: mov R6 $5
+fabel: mov r4 $101
+hlt
