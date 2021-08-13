@@ -11,7 +11,7 @@ def jgt(string, labels):
 
     if len(arr) == 2:
         output = output + "000"
-        if lbdct.get(arr[1]):
+        if lbdct.get(arr[1]) is not None:
             mem = lbdct.get(arr[1])
             output = output + bin(mem)[2:].zfill(8)
             return output

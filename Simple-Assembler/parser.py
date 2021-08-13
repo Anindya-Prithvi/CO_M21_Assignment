@@ -50,7 +50,7 @@ def parser(string, labels, variables):
         parsed_string = jmp(string, labels)
     elif op == "jlt":
         parsed_string = jlt(string, labels)
-    elif op == "jgt":
+    elif op == "je":
         parsed_string = je(string, labels)
     else:
         parsed_string = "ERROR: WRONG MNENOMIC in " + string
