@@ -10,9 +10,9 @@ def add(add_instruction):
     }
     list = add_instruction.split()
     if len(list) < 4:
-        return "ERROR:INCOMPLETE INSTRUCTION/ WRONG ARGUMENT"
+        return "ERROR: INCOMPLETE INSTRUCTION/ WRONG ARGUMENT"
     if list[0] != "add":
-        return "ERROR:ILLEGAL ARGUMENT"
+        return "ERROR: ILLEGAL ARGUMENT"
     else:
         c = 0
         bin_string = "0000000"
@@ -25,7 +25,7 @@ def add(add_instruction):
                 else:
                     c = 1
             if c == 1:
-                return "ERROR:INVALID REGISTER CODE"
+                return "ERROR: INVALID REGISTER CODE"
         return bin_string
 
 

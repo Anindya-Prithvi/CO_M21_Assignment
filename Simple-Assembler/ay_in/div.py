@@ -10,9 +10,9 @@ def div(div_instruction):
     }
     list = div_instruction.split()
     if len(list) < 3:
-        return "ERROR:INCOMPLETE INSTRUCTION"
+        return "ERROR: INCOMPLETE INSTRUCTION"
     if list[0] != "div":
-        return "ERROR:ILLEGAL ARGUMENT"
+        return "ERROR: ILLEGAL ARGUMENT"
     else:
         c = 0
         bin_string = "0011100000"
@@ -25,7 +25,7 @@ def div(div_instruction):
                 else:
                     c = 1
             if c == 1:
-                return "ERROR:INVALID REGISTER CODE"
+                return "ERROR: INVALID REGISTER CODE"
         return bin_string
 
 

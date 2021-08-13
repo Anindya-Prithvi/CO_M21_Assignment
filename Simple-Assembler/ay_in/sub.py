@@ -10,9 +10,9 @@ def sub(sub_instruction):
     }
     list = sub_instruction.split()
     if len(list) < 4:
-        return "ERROR:INCOMPLETE INSTRUCTION"
+        return "ERROR: INCOMPLETE INSTRUCTION"
     if list[0] != "sub":
-        return "ERROR:ILLEGAL ARGUMENT"
+        return "ERROR: ILLEGAL ARGUMENT"
     else:
         c = 0
         bin_string = "0000100"
@@ -25,7 +25,7 @@ def sub(sub_instruction):
                 else:
                     c = 1
             if c == 1:
-                return "ERROR:INVALID REGISTER CODE"
+                return "ERROR: INVALID REGISTER CODE"
         return bin_string
 
 
