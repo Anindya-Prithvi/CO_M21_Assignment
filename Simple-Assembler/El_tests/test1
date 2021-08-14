@@ -1,17 +1,10 @@
 var sigma
 var gamma
-label: mov R6 $5
-fabel: mov R4 $101
-st R3 sigma
-mov R5 FLAGS
-mov R4 R4
-
-ld R4 sigma
-st R4 gamma
-xor R4 R3 R2
+var gaki
+add R1 R0 R6
+mov R1 FLAGS
+xor R0 R1 R1
 jmp label
-je fabel
-je label
-jlt label
 jgt label
-hlt
+label: hlt
+add R1 R2 R3
