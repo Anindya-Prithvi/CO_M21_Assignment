@@ -11,6 +11,8 @@ def add(add_instruction):
     list = add_instruction.split()
     if "FLAGS" in list:
         return "ERROR: FLAGS CANNOT BE AN OPERAND HERE"
+    if len(list)>4:
+        return "ERROR: MORE THAN THREE REGISTERS ACCESSED"
     if len(list) < 4:
         return "ERROR: INCOMPLETE INSTRUCTION/ WRONG ARGUMENT"
     if list[0] != "add":
@@ -31,5 +33,5 @@ def add(add_instruction):
         return bin_string
 
 
-# instruct="add R1 R2 R3"
+# instruct="add R0 R1 R2 R5"
 # print(add(instruct))
