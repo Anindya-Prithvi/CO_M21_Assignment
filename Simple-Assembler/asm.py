@@ -81,7 +81,7 @@ def labelproc(string):
 # hence using stdin.read to read the whole stream together
 assembly = sys.stdin.read()
 
-if bool(re.match("\s*$",assembly)): 
+if bool(re.match("\s*$", assembly)):
     print("ln: 0 --> ERROR: EMPTY STDIN OR NO INSTRUCTION")
     run = False
 
@@ -138,7 +138,11 @@ if run:
 
 if run:
     # check hlt instruction
-    hlts = [l for l in lines_assembly if re.match("\s*hlt\s*", l) or re.match("[A-Za-z0-9]+:\s*hlt\s*",l)]
+    hlts = [
+        l
+        for l in lines_assembly
+        if re.match("\s*hlt\s*", l) or re.match("[A-Za-z0-9]+:\s*hlt\s*", l)
+    ]
     if len(hlts) > 1:
         print(
             f"ln: {lines_assembly.index(hlts[0])+1} --> ERROR: MULTIPLE HALT INSTRUCTIONS IN STDIN"
