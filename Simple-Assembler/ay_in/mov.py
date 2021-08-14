@@ -10,7 +10,7 @@ def mov(mov_instruction):
         "FLAGS": "111",
     }
     list = mov_instruction.split()
-    if list[0] != "mov":
+    if list[0] != "mov" or len(list)!=3:
         return "ERROR: ILLEGAL ARGUMENT"
     if list[2] in register:
         c = 0
