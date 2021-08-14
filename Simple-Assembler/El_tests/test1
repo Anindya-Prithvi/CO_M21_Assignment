@@ -1,4 +1,4 @@
-var sigma
+var add
 var gamma
 
 label: mov R6 $5
