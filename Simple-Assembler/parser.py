@@ -1,4 +1,5 @@
 # Parser for A,B,C,D,E,F
+import re
 
 from an_in import je, jgt, jlt, jmp, ld, st
 from ay_in import add, div, mov, mul, sub
@@ -52,7 +53,11 @@ def parser(string, labels, variables):
         parsed_string = jlt(string, labels)
     elif op == "je":
         parsed_string = je(string, labels)
+    elif op == "var":
+        parsed_string = "ERROR: VARIABLE CANNOT BE DECLARED INSIDE LABELS"
+    elif re.match("\s*[A-Za-z0-9]+:.*", op):
+        parsed_string = "ERROR: LABEL FOUND INSIDE LABEL"
     else:
-        parsed_string = "ERROR: WRONG MNENOMIC in " + string
+        parsed_string = "ERROR: WRONG MNENOMIC IN " + string
 
     return parsed_string
