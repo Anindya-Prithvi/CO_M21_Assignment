@@ -1,5 +1,6 @@
 var sigma
 var gamma
+
 label: mov R6 $5
 fabel: mov R4 $101
 st R3 sigma
@@ -19,4 +20,5 @@ je fabel
 je label
 jlt label
 jgt label
+
 hlt
