@@ -1,8 +1,13 @@
+var sigma
+var gamma
 label: mov R6 $5
 fabel: mov R4 $101
+st R3 sigma
+mov R5 FLAGS
+mov R4 R4
 
-
-
+ld R4 sigma
+st R4 gamma
 
 jmp label
 je fabel
