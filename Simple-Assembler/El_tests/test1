@@ -6,5 +6,5 @@ mov R1 FLAGS
 xor R0 R1 R1
 jmp label
 jgt label
-label: hlt
-add R1 R2 R3
+label: lol xyz
+hlt
