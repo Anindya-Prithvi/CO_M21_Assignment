@@ -10,7 +10,7 @@ def mov(mov_instruction):
         "FLAGS": "111",
     }
     list = mov_instruction.split()
-    if len(list)!=3:
+    if len(list) != 3:
         return "ERROR: TOO MANY OPERANDS"
     if list[2] in register:
         c = 0
@@ -22,7 +22,7 @@ def mov(mov_instruction):
                     c = 0
                     break
                 else:
-                    if (list[j] == "FLAGS") and (j==1):
+                    if (list[j] == "FLAGS") and (j == 1):
                         return "ERROR: CANNOT WRITE TO FLAGS"
                     c = 1
             if c == 1:
@@ -45,7 +45,7 @@ def mov(mov_instruction):
                 if i == list[1] and i != "FLAGS":
                     bin_string = bin_string + register[i]
                     break
-                elif i=="FLAGS":
+                elif i == "FLAGS":
                     return "ERROR: IMMEDITATE VALUES CANNOT BE WRITTEN TO FLAGS"
             else:
                 return "ERROR: INVALID REGISTER CODE"
