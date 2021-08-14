@@ -42,51 +42,6 @@ def varproc(string):
     return None
 
 
-# files have been read to input stream using < command
-# hence using stdin.read to read the whole stream together
-assembly = sys.stdin.read()
-
-
-# process each line of assembly
-lines_assembly = assembly.split("\n")
-
-# ignore blank lines
-proc1 = [l for l in lines_assembly if not re.match("^\s*$", l)]
-
-while run:
-    if proc1 == []:
-        break
-    if proc1[0].split()[0] == "var":
-        if (e := varproc(ln := proc1.pop(0))) is not None:
-            print(f"ln: {lines_assembly.index(ln)+1} --> " + e)
-            run = False
-            break
-    else:
-        break
-
-# now proc1 is free of variables (hopefully)
-if any((j := re.match("\s*var.*", i)) for i in proc1) and run:
-    print(
-        f"ln: {lines_assembly.index(j.string)+1} --> "
-        + "ERROR: VARIABLE NOT DECLARED AT START"
-    )
-    run = False
-
-# guaranteed proc1 only has instructions
-
-inst_len = len(proc1)
-for i in variables:
-    i[1] = inst_len
-    inst_len += 1
-
-# all variables now have address
-
-# now process for labels
-labels = []
-
-proc1l = proc1.copy()
-
-
 def labelproc(string):
     # here string is always a valid label
 
@@ -120,6 +75,57 @@ def labelproc(string):
     ninst = string[string.index(":") :].lstrip(":")
     proc1l[proc1.index(string)] = ninst
     return None
+
+
+# files have been read to input stream using < command
+# hence using stdin.read to read the whole stream together
+assembly = sys.stdin.read()
+
+if bool(re.match("\s*$",assembly)): 
+    print("ln: 0 --> ERROR: EMPTY STDIN OR NO INSTRUCTION")
+    run = False
+
+
+if run:
+    # process each line of assembly
+    lines_assembly = assembly.split("\n")
+
+    # ignore blank lines
+    proc1 = [l for l in lines_assembly if not re.match("^\s*$", l)]
+
+while run:
+    if proc1 == []:
+        break
+    if proc1[0].split()[0] == "var":
+        if (e := varproc(ln := proc1.pop(0))) is not None:
+            print(f"ln: {lines_assembly.index(ln)+1} --> " + e)
+            run = False
+            break
+    else:
+        break
+
+# now proc1 is free of variables (hopefully)
+if run and any((j := re.match("\s*var.*", i)) for i in proc1):
+    print(
+        f"ln: {lines_assembly.index(j.string)+1} --> "
+        + "ERROR: VARIABLE NOT DECLARED AT START"
+    )
+    run = False
+
+# guaranteed proc1 only has instructions
+
+if run:
+    inst_len = len(proc1)
+    for i in variables:
+        i[1] = inst_len
+        inst_len += 1
+
+    # all variables now have address
+
+    # now process for labels
+    labels = []
+
+    proc1l = proc1.copy()
 
 
 if run:

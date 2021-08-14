@@ -46,7 +46,7 @@ class ExecE:
 		self.mem = memobj
 	def execute(inst16bit, rfpc):
 		if inst16bits[:5]=="00101":
-			mem.maintainvar(inst16bit[8:], rfpc.get(inst16bits[5:8]).zfill(16))
+			self.mem.maintainvar(inst16bit[8:], rfpc.get(inst16bits[5:8]).zfill(16))
 
 
 MEM = IMACC(sys.stdin.read()) # Load memory from stdin
