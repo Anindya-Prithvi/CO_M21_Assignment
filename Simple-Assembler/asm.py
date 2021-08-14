@@ -10,10 +10,10 @@ run = True
 def varproc(string):
     inst = string.split()
     if not (len(inst) == 2):
-        return "ERROR: INVALID VARIABLE DECLARATION"
+        return '[91m' + "ERROR:" + '[0m' + " INVALID VARIABLE DECLARATION"
     # first part of string has var
     if re.match(".*[^A-Za-z0-9_]+", inst[1]):
-        return "ERROR: INVALID VARIABLE NAME"
+        return '[91m' + "ERROR:" + '[0m' + " INVALID VARIABLE NAME"
     if inst[1] in {
         "add",
         "sub",
@@ -35,7 +35,7 @@ def varproc(string):
         "je",
         "hlt",
     }:
-        return "ERROR: VARIABLE NAME SAME AS MNENOMIC"
+        return '[91m' + "ERROR:" + '[0m' + " VARIABLE NAME SAME AS MNENOMIC"
     # second needs to be regexed
     # append to variable storage(address after instruction mem is made)
     variables.append([inst[1], 0])  # stored variable (not addressed)
@@ -66,11 +66,11 @@ def labelproc(string):
         "je",
         "hlt",
     }:
-        return "ERROR: LABEL NAME SAME AS MNENOMIC"
+        return '[91m' + "ERROR:" + '[0m' + " LABEL NAME SAME AS MNENOMIC"
     labels.append([string[: string.index(":")].strip(), proc1.index(string)])
 
     if len(set([i[0] for i in labels])) != len([i[0] for i in labels]):
-        return "ERROR: MULTIPLE SAME NAME LABEL DECLARATION FOUND"
+        return '[91m' + "ERROR:" + '[0m' + " MULTIPLE SAME NAME LABEL DECLARATION FOUND"
 
     ninst = string[string.index(":") :].lstrip(":")
     proc1l[proc1.index(string)] = ninst
@@ -82,7 +82,7 @@ def labelproc(string):
 assembly = sys.stdin.read()
 
 if bool(re.match("\s*$", assembly)):
-    print("ln: 0 --> ERROR: EMPTY STDIN OR NO INSTRUCTION")
+    print("ln: 0 --> " + '[91m' + "ERROR:" + '[0m' + " EMPTY STDIN OR NO INSTRUCTION")
     run = False
 
 
@@ -108,7 +108,7 @@ while run:
 if run and any((j := re.match("\s*var.*", i)) for i in proc1):
     print(
         f"ln: {lines_assembly.index(j.string)+1} --> "
-        + "ERROR: VARIABLE NOT DECLARED AT START"
+        + '[91m' + "ERROR:" + '[0m' + " VARIABLE NOT DECLARED AT START"
     )
     run = False
 
@@ -145,13 +145,13 @@ if run:
     ]
     if len(hlts) > 1:
         print(
-            f"ln: {lines_assembly.index(hlts[0])+1} --> ERROR: MULTIPLE HALT INSTRUCTIONS IN STDIN"
+            f"ln: {lines_assembly.index(hlts[0])+1} --> " + '[91m' + "ERROR:" + '[0m' + " MULTIPLE HALT INSTRUCTIONS IN STDIN"
         )
         run = False
     if len(hlts) == 1:
         if proc1.index(hlts[0]) != len(proc1) - 1:
             print(
-                f"ln: {lines_assembly.index(hlts[0])+1} --> ERROR: HALT IS NOT LAST INSTRUCTION"
+                f"ln: {lines_assembly.index(hlts[0])+1} --> " + '[91m' + "ERROR:" + '[0m' + " HALT IS NOT LAST INSTRUCTION"
             )
             run = False
         else:
@@ -161,9 +161,9 @@ if run:
     parsed = [parser(i.strip(), labels, variables) for i in proc1l]
     for i, e in enumerate(parsed):
         if e[0] != "0" and e[0] != "1":
-            print(f"ln: {lines_assembly.index(proc1[i])+1} --> " + e)
+            print(f"ln: {lines_assembly.index(proc1[i])+1} --> " + '\033[91m' + "ERROR:" + '\033[0m' + e[6:])
             run = False
-            break
+            
     if parsed == [] or parsed[-1] != "1001100000000000":
         run = False
         print("ln: xx ERROR: HALT INSTRUCTION NOT FOUND")
