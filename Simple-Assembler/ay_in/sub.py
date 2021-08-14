@@ -11,7 +11,7 @@ def sub(sub_instruction):
     list = sub_instruction.split()
     if "FLAGS" in list:
         return "ERROR: FLAGS CANNOT BE AN OPERAND HERE"
-    if len(list)>4:
+    if len(list) > 4:
         return "ERROR: MORE THAN THREE REGISTERS ACCESSED"
     if len(list) < 4:
         return "ERROR: INCOMPLETE INSTRUCTION"
