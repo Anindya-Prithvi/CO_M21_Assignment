@@ -1,6 +1,7 @@
 var sigma
 var gamma
 var gaki
+add R0 R1 R2 R3
 mov R1 R2 R3
 add R1 R0 R6
 mov R1 FLAGS
