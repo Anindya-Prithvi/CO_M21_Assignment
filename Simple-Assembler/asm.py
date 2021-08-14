@@ -1,6 +1,6 @@
 import re
 import sys
-from parser import parser
+from parse import parser
 
 variables = []
 
