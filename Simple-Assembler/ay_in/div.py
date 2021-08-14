@@ -9,7 +9,8 @@ def div(div_instruction):
         "R6": "110",
     }
     list = div_instruction.split()
-    if "FLAGS" in list: return "ERROR: FLAGS CANNOT BE AN OPERAND HERE"
+    if "FLAGS" in list:
+        return "ERROR: FLAGS CANNOT BE AN OPERAND HERE"
     if len(list) < 3:
         return "ERROR: INCOMPLETE INSTRUCTION"
     if list[0] != "div":

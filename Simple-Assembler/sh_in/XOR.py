@@ -3,7 +3,8 @@ def XOR(str_in):
     arr = str_in.split()
     output = "01010"
     err = ""
-    if "FLAGS" in arr: return "ERROR: FLAGS CANNOT BE AN OPERAND HERE"
+    if "FLAGS" in arr:
+        return "ERROR: FLAGS CANNOT BE AN OPERAND HERE"
 
     register = {
         "R0": "000",
