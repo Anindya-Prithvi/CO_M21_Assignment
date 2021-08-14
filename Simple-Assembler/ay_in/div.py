@@ -11,6 +11,8 @@ def div(div_instruction):
     list = div_instruction.split()
     if "FLAGS" in list:
         return "ERROR: FLAGS CANNOT BE AN OPERAND HERE"
+    if len(list)>3:
+        return "ERROR: MORE THAN TWO REGISTERS ACCESSED"
     if len(list) < 3:
         return "ERROR: INCOMPLETE INSTRUCTION"
     if list[0] != "div":
