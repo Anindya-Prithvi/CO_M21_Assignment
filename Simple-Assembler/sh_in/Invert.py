@@ -4,6 +4,7 @@ def Invert(str_in):
     output = "01101"
     output = output + "00000"
     err = ""
+    if "FLAGS" in arr: return "ERROR: FLAGS CANNOT BE AN OPERAND HERE"
 
     register = {
         "R0": "000",
