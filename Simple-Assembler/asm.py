@@ -138,7 +138,7 @@ if run:
 
 if run:
     # check hlt instruction
-    hlts = [l for l in lines_assembly if re.match("\s*hlt\s*", l)]
+    hlts = [l for l in lines_assembly if re.match("\s*hlt\s*", l) or re.match("[A-Za-z0-9]+:\s*hlt\s*",l)]
     if len(hlts) > 1:
         print(
             f"ln: {lines_assembly.index(hlts[0])+1} --> ERROR: MULTIPLE HALT INSTRUCTIONS IN STDIN"
@@ -160,7 +160,8 @@ if run:
             print(f"ln: {lines_assembly.index(proc1[i])+1} --> " + e)
             run = False
             break
-    if parsed[-1] != "1001100000000000":
+    if parsed == [] or parsed[-1] != "1001100000000000":
+        run = False
         print("ln: xx ERROR: HALT INSTRUCTION NOT FOUND")
 
     ## if non_binary in parsed: print error
