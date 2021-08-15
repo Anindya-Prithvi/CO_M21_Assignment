@@ -197,7 +197,13 @@ if run:
 
     if parsed == [] or parsed[-1] != "1001100000000000":
         run = False
-        print("ln: xx ERROR: HALT INSTRUCTION NOT FOUND")
+        print(
+            "ln: xx --> "
+            + "\033[91m"
+            + "ERROR:"
+            + "\033[0m"
+            + " HALT INSTRUCTION NOT FOUND"
+        )
 
     ## if non_binary in parsed: print error
     ## else: create for loop and print binaries
