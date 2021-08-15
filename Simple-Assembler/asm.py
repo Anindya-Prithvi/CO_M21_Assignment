@@ -3,11 +3,13 @@ import sys
 from parse import parser
 
 variables = []
+labels = []
 
 run = True
 
 
 def varproc(string):
+    global variables
     inst = string.split()
     if not (len(inst) == 2):
         return "[91m" + "ERROR:" + "[0m" + " INVALID VARIABLE DECLARATION"
@@ -50,7 +52,7 @@ def varproc(string):
 
 def labelproc(string):
     # here string is always a valid label
-
+    global labels
     if string[: string.index(":")].strip() in {
         "var",
         "add",
@@ -83,7 +85,10 @@ def labelproc(string):
 
     if len(set([i[0] for i in labels])) != len([i[0] for i in labels]):
         return (
-            "[91m" + "ERROR:" + "[0m" + " MULTIPLE SAME NAME LABEL DECLARATION FOUND"
+            "[91m"
+            + "ERROR:"
+            + "[0m"
+            + " MULTIPLE SAME NAME LABEL DECLARATION FOUND"
         )
 
     ninst = string[string.index(":") :].lstrip(":")
@@ -96,7 +101,13 @@ def labelproc(string):
 assembly = sys.stdin.read()
 
 if bool(re.match("\s*$", assembly)):
-    print("ln: 0 --> " + "[91m" + "ERROR:" + "[0m" + " EMPTY STDIN OR NO INSTRUCTION")
+    print(
+        "ln: 0 --> "
+        + "[91m"
+        + "ERROR:"
+        + "[0m"
+        + " EMPTY STDIN OR NO INSTRUCTION"
+    )
     run = False
 
 
@@ -140,7 +151,6 @@ if run:
     # all variables now have address
 
     # now process for labels
-    labels = []
 
     proc1l = proc1.copy()
 
@@ -148,7 +158,7 @@ if run:
 if run:
     for i in proc1:
         if re.match("\s*[A-Za-z0-9_]+:.*", i):
-            if (e := labelproc(i)) is not None:
+            if run and (e := labelproc(i)) is not None:
                 print(f"ln: {lines_assembly.index(i)+1} --> " + e)
                 run = False
 
