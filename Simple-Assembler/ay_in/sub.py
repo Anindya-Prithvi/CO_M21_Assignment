@@ -12,7 +12,7 @@ def sub(sub_instruction):
     if "FLAGS" in list:
         return "ERROR: FLAGS CANNOT BE AN OPERAND HERE"
     if len(list) > 4:
-        return "ERROR: MORE THAN THREE REGISTERS ACCESSED"
+        return "ERROR: MORE THAN THREE OPERANDS GIVEN"
     if len(list) < 4:
         return "ERROR: INCOMPLETE INSTRUCTION"
     if list[0] != "sub":
