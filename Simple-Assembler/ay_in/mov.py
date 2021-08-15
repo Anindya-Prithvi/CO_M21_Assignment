@@ -46,7 +46,9 @@ def mov(mov_instruction):
                     bin_string = bin_string + register[i]
                     break
                 elif i == "FLAGS":
-                    return "ERROR: IMMEDITATE VALUES CANNOT BE WRITTEN TO FLAGS"
+                    return (
+                        "ERROR: IMMEDITATE VALUES CANNOT BE WRITTEN TO FLAGS"
+                    )
             else:
                 return "ERROR: INVALID REGISTER CODE"
             bin_string = bin_string + format(num, "08b")
