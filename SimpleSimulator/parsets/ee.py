@@ -1,4 +1,5 @@
 from sh_in import lshift
+from sh_in import rshift
 
 
 class ExecE:
@@ -37,7 +38,7 @@ class ExecE:
         elif inst16bit[:5] == "00111":
             return div(inst16bit, rfpc)
         elif inst16bit[:5] == "01000":
-            return rs(inst16bit, rfpc)
+            return rshift(inst16bit, rfpc)
         elif inst16bit[:5] == "01001":
             return lshift(inst16bit, rfpc)
         elif inst16bit[:5] == "01010":
