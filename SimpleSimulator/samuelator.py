@@ -9,7 +9,7 @@ MEM = IMACC(sys.stdin.read()) # Load memory from stdin
 PC = PROGC(0) # Start from the first instruction
 RF = REGFLPC() #initialize register and flags
 EE = ExecE(MEM)
-halted = false
+halted = False
 cycle = 1
 
 while(not halted):
