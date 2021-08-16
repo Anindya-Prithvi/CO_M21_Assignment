@@ -2,13 +2,16 @@ from sh_in import*
 from an_in import*
 
 class ExecE:
+
+    # define a class variable only for MAC instructions, store access and then plot
+    # might also need
     def __init__(self, memobj):
         self.mem = memobj
 
     def execute(self, inst16bit, rfpc):
         if inst16bit[:5] == "00101":  # store
             self.mem.maintainvar(
-                inst16bit[8:], rfpc.get(inst16bit[5:8]).zfill(16)
+                inst16bit[8:], rfpc.get("R"+str(int(inst16bit[5:8],2)))
             )
             rfpc["PC"] += 1
             rfpc["FLAGS"] = "0000000000000000"
@@ -29,7 +32,7 @@ class ExecE:
         elif inst16bit[:5] == "00011":
             return movr(inst16bit, rfpc)
         elif inst16bit[:5] == "00100":
-            return ld(inst16bit, rfpc)  # add provision for mem view
+            return ld(inst16bit, rfpc, self.mem)  # add provision for mem view
         # elif inst16bit[:5]=="00101":
         # 	return st(inst16bit, rfpc)
         elif inst16bit[:5] == "00110":
