@@ -12,6 +12,8 @@ EE = ExecE(MEM)
 halted = False
 cycle = 1
 
+if MEM.inst_mem==["0"*16 for i in range(256)]: halted = True
+
 while not halted:
     Instruction = MEM.getData(PC)
     # Get current instruction
