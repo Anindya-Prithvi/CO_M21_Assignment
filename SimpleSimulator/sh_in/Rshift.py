@@ -1,4 +1,4 @@
-def lshift(s ,rpc):
+def rshift(s ,rpc):
     rpc["FLAGS"]= "0"*16
     s = s[5::]
     R_a = s[:3]
@@ -18,7 +18,9 @@ def lshift(s ,rpc):
     rlist = ["R0", "R1", "R2", "R3", "R4", "R5", "R6"]
 
     if R_a in rlist:
-        temp = int(rpc[R_a],2)<<imm_a
+        temp = int(rpc[R_a],2)>>imm_a
+    else :
+        print("N")
 
     temp = str(bin(temp))
     temp = temp[2::]
@@ -39,7 +41,7 @@ def lshift(s ,rpc):
 rpc = {
         "R0": "0000000000000000",
         "R1": "0000000000101000",
-        "R2": "0000000000000000",
+        "R2": "0000000010011000",
         "R3": "0000000000000000",
         "R4": "0000000000000000",
         "R5": "0000000000000000",
@@ -48,7 +50,7 @@ rpc = {
         "PC": 10
     }
 
-rpc = (lshift("0100100100000010",rpc))
+rpc = (rshift("0100000100000010",rpc))
 
 for key,value in rpc.items():
 	print(key, ':', value)
