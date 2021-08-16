@@ -1,6 +1,5 @@
-from sh_in import lshift
-from sh_in import rshift
-
+from sh_in import*
+from an_in import*
 
 class ExecE:
     def __init__(self, memobj):
