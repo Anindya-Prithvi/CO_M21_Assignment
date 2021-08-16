@@ -18,7 +18,7 @@ def lshift(s ,rpc):
     rlist = ["R0", "R1", "R2", "R3", "R4", "R5", "R6"]
 
     for R_a in rlist:
-        temp = int(rpc[R_a],2)>>imm_a
+        temp = int(rpc[R_a],2)<<imm_a
 
     temp = str(bin(temp))
     temp = temp[2::]
