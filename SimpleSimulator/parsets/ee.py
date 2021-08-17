@@ -24,10 +24,10 @@ class ExecE:
         else:
             if inst16bit[:5] == "00100":
                 img.add(cycle, int(inst16bit[8:], 2))
-            rfpc = ExecE.parse(inst16bit, rfpc)
+            rfpc = ExecE.parse(self, inst16bit, rfpc)
             return False, rfpc["PC"], rfpc
 
-    def parse(inst16bit, rfpc):
+    def parse(self, inst16bit, rfpc):
         if inst16bit[:5] == "00000":
             return add(inst16bit, rfpc)
         elif inst16bit[:5] == "00001":
