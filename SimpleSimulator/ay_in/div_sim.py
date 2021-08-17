@@ -13,10 +13,7 @@ def div_instruction(instruct, reg):
         "R6": "110",
         "FLAGS": "111",
     }
-    if (
-        instruct[10:13] == register["FLAGS"]
-        or instruct[13:] == register["FLAGS"]
-    ):
+    if instruct[10:13] == register["FLAGS"] or instruct[13:] == register["FLAGS"]:
         return "ERROR:FLAG REGISTER WAS ACCESSED"
 
     reg["FLAGS"] = "0" * 16
@@ -27,7 +24,7 @@ def div_instruction(instruct, reg):
         if register[key] == instruct[10:13]:
             cx = 1
             key1 = key
-        elif register[key] == instruct[13:]:
+        if register[key] == instruct[13:]:
             cy = 1
             key2 = key
 

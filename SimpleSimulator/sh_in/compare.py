@@ -2,7 +2,7 @@ def cmp(s, rpc):
 
     rpc["FLAGS"] = "0" * 16
     flag = "0" * 12
-    s = s[5::]
+    s = s[10::]
     R_a = s[:3]
     R_b = s[3:6]
 

@@ -44,6 +44,4 @@ plt.xlabel("Cycle")
 plt.axes().xaxis.set_major_locator(MaxNLocator(integer=True))
 plt.ylabel("Memory Address")
 plt.axes().yaxis.set_major_locator(MaxNLocator(integer=True))
-plt.savefig(
-    fname=f"plots/time_{time.time()}.png", dpi=600, bbox_inches="tight"
-)
+plt.savefig(fname=f"plots/time_{time.time()}.png", dpi=600, bbox_inches="tight")
