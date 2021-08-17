@@ -1,5 +1,7 @@
-from sh_in import*
-from an_in import*
+from an_in import *
+from ay_in import *
+from sh_in import *
+
 
 class ExecE:
 
@@ -8,17 +10,20 @@ class ExecE:
     def __init__(self, memobj):
         self.mem = memobj
 
-    def execute(self, inst16bit, rfpc):
+    def execute(self, inst16bit, rfpc, img):
         if inst16bit[:5] == "00101":  # store
             self.mem.maintainvar(
-                inst16bit[8:], rfpc.get("R"+str(int(inst16bit[5:8],2)))
+                inst16bit[8:], rfpc.get("R" + str(int(inst16bit[5:8], 2)))
             )
+            img.add(rfpc["PC"], int(inst16bit[8:], 2))
             rfpc["PC"] += 1
             rfpc["FLAGS"] = "0000000000000000"
             return False, rfpc["PC"], rfpc
         elif inst16bit[:5] == "10011":
             return True, -1, rfpc
         else:
+            if inst16bit[:5] == "00100":
+                img.add(rfpc["PC"], int(inst16bit[8:], 2))
             rfpc = ExecE.parse(inst16bit, rfpc)
             return False, rfpc["PC"], rfpc
 
@@ -28,9 +33,9 @@ class ExecE:
         elif inst16bit[:5] == "00001":
             return sub(inst16bit, rfpc)
         elif inst16bit[:5] == "00010":
-            return movim(inst16bit, rfpc)
+            return mov(inst16bit, rfpc)
         elif inst16bit[:5] == "00011":
-            return movr(inst16bit, rfpc)
+            return mov(inst16bit, rfpc)
         elif inst16bit[:5] == "00100":
             return ld(inst16bit, rfpc, self.mem)  # add provision for mem view
         # elif inst16bit[:5]=="00101":
@@ -52,7 +57,7 @@ class ExecE:
         elif inst16bit[:5] == "01101":
             return invert(inst16bit, rfpc)
         elif inst16bit[:5] == "01110":
-            return compare(inst16bit, rfpc)
+            return cmp(inst16bit, rfpc)
         elif inst16bit[:5] == "01111":
             return jmp(inst16bit, rfpc)
         elif inst16bit[:5] == "10000":

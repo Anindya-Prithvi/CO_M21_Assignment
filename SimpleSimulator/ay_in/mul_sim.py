@@ -2,7 +2,7 @@
 def mul_instruction(instruct,reg):
     if instruct[:5]!="00110":
         return "ERROR:ILLEGAL INSTRUCTION"
-    
+
     register = {
         "R0": "000",
         "R1": "001",
@@ -11,27 +11,32 @@ def mul_instruction(instruct,reg):
         "R4": "100",
         "R5": "101",
         "R6": "110",
-        "FLAGS":"111"
+        "FLAGS": "111",
     }
-    if instruct[7:10]==register["FLAGS"] or instruct[10:13]==register["FLAGS"] or instruct[13:]==register["FLAGS"]:
+    if (
+        instruct[7:10] == register["FLAGS"]
+        or instruct[10:13] == register["FLAGS"]
+        or instruct[13:] == register["FLAGS"]
+    ):
         return "ERROR:FLAG REGISTER WAS ACCESSED"
-    
-    reg["FLAGS"] = "0"*16 
-    
-    cx,cy,cz=0,0,0
-    
+
+    reg["FLAGS"] = "0" * 16
+
+    cx, cy, cz = 0, 0, 0
+
     for key in register:
-        if register[key]==instruct[7:10]:
-            cx=1
-            key1=key
-        elif register[key]==instruct[10:13]:
-            cy=1
-            key2=key
-        elif register[key]==instruct[13:]:
-            cz=1
-            key3=key
-    if cx==0 or cy==0 or cz==0:
+        if register[key] == instruct[7:10]:
+            cx = 1
+            key1 = key
+        elif register[key] == instruct[10:13]:
+            cy = 1
+            key2 = key
+        elif register[key] == instruct[13:]:
+            cz = 1
+            key3 = key
+    if cx == 0 or cy == 0 or cz == 0:
         return "ERROR:INVALID REGISTER"
+
     x = int(reg[key2],2)
     y = int(reg[key3],2)
     z = x*y
@@ -43,10 +48,11 @@ def mul_instruction(instruct,reg):
         reg[key1] = a
         reg["PC"] = reg["PC"]+1
         return reg
-    
-    reg[key1] = format(z,"016b")
-    reg["PC"] = reg["PC"]+1
+
+    reg[key1] = format(z, "016b")
+    reg["PC"] = reg["PC"] + 1
     return reg
+
 
 # test
 # rpc = {

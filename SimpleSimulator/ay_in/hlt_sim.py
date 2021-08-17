@@ -1,10 +1,11 @@
-def hlt_instruction(instruct,reg):
-    if instruct!="1001100000000000":
+def hlt_instruction(instruct, reg):
+    if instruct != "1001100000000000":
         return "ERROR:ILLEGAL INSTRUCTION"
-    reg["PC"]=reg["PC"]+1
+    reg["PC"] = reg["PC"] + 1
     return reg
 
-#test
+
+# test
 # rpc = {
 #         "R0": "0000000000000000",
 #         "R1": "0000000000000000",

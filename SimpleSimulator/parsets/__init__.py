@@ -1,4 +1,3 @@
-from .imacc import IMACC
-from .imacc import PROGC
-from .imacc import REGFLPC
 from .ee import ExecE
+from .imacc import IMACC, PROGC, REGFLPC
+from .imagene import IMG
