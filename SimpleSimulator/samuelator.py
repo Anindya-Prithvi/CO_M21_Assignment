@@ -1,10 +1,8 @@
 import sys
-import time
 import warnings
 
 import matplotlib.pyplot as plt
-from matplotlib.ticker import MaxNLocator
-from parsets import IMACC, IMG, PROGC, REGFLPC, ExecE
+from parsets import IMACC, IMG, PROGC, REGFLPC, ExecE, plot
 
 warnings.filterwarnings("ignore")
 
@@ -38,10 +36,4 @@ while not halted:
 MEM.dump()  # Print memory state
 
 # plotting
-plt.scatter(IM.imgx, IM.imgy)
-plt.title("Memory access trace")
-plt.xlabel("Cycle")
-plt.axes().xaxis.set_major_locator(MaxNLocator(integer=True))
-plt.ylabel("Memory Address")
-plt.axes().yaxis.set_major_locator(MaxNLocator(integer=True))
-plt.savefig(fname=f"plots/time_{time.time()}.png", dpi=600, bbox_inches="tight")
+plot(plt, IM)
