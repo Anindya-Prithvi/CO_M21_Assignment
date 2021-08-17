@@ -29,10 +29,10 @@ def add_instruction(instruct, reg):
         if register[key] == instruct[7:10]:
             cx = 1
             key1 = key
-        elif register[key] == instruct[10:13]:
+        if register[key] == instruct[10:13]:
             cy = 1
             key2 = key
-        elif register[key] == instruct[13:]:
+        if register[key] == instruct[13:]:
             cz = 1
             key3 = key
     if cx == 0 or cy == 0 or cz == 0:

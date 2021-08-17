@@ -22,7 +22,7 @@ def mov(instruct, reg):
             if instruct[10:13] == register[i]:
                 cx = 1
                 key1 = i
-            elif instruct[13:] == register[i]:
+            if instruct[13:] == register[i]:
                 cy = 1
                 key2 = i
         if cx == 0 or cy == 0:
