@@ -1,38 +1,39 @@
-def invert(s ,rpc):
-   
-    rpc["FLAGS"]= "0"*16
+def invert(s, rpc):
+
+    rpc["FLAGS"] = "0" * 16
     s = s[5::]
     R_a = s[:3]
     R_b = s[3:6]
     R_c = s[6:9]
-    
+
     register = {
-        "000" : "R0",
-        "001" : "R1",
-        "010" : "R2",
-        "011" : "R3",
-        "100" : "R4",
-        "101" : "R5",
-        "110" : "R6",
+        "000": "R0",
+        "001": "R1",
+        "010": "R2",
+        "011": "R3",
+        "100": "R4",
+        "101": "R5",
+        "110": "R6",
     }
 
     R_a = register[R_a]
     R_b = register[R_b]
-    
+
     a = ""
     b = rpc[R_b]
-    
+
     for i in range(16):
-        if b[i]=="0":
+        if b[i] == "0":
             a = a + "1"
         else:
-            a= a + "0"
+            a = a + "0"
 
     rpc[R_a] = a
 
-    rpc["PC"] = rpc["PC"]+1
+    rpc["PC"] = rpc["PC"] + 1
 
     return rpc
+
 
 # TEST
 

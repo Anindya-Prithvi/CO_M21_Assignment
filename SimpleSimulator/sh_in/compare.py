@@ -1,26 +1,26 @@
-def cmp(s ,rpc):
-   
-    rpc["FLAGS"]= "0"*16
-    flag = "0"*12
+def cmp(s, rpc):
+
+    rpc["FLAGS"] = "0" * 16
+    flag = "0" * 12
     s = s[5::]
     R_a = s[:3]
     R_b = s[3:6]
-    
+
     register = {
-        "000" : "R0",
-        "001" : "R1",
-        "010" : "R2",
-        "011" : "R3",
-        "100" : "R4",
-        "101" : "R5",
-        "110" : "R6",
+        "000": "R0",
+        "001": "R1",
+        "010": "R2",
+        "011": "R3",
+        "100": "R4",
+        "101": "R5",
+        "110": "R6",
     }
 
     R_a = register[R_a]
     R_b = register[R_b]
 
-    R_a = int(rpc[R_a],2)
-    R_b = int(rpc[R_b],2)
+    R_a = int(rpc[R_a], 2)
+    R_b = int(rpc[R_b], 2)
 
     if R_a > R_b:
         flag = flag + "0010"
@@ -31,9 +31,10 @@ def cmp(s ,rpc):
 
     rpc["FLAGS"] = flag
 
-    rpc["PC"] = rpc["PC"]+1
+    rpc["PC"] = rpc["PC"] + 1
 
     return rpc
+
 
 # # TEST
 

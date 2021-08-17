@@ -15,7 +15,7 @@ class IMACC:
 
     def maintainvar(self, addr, value):
         # called by execution engine incase of ld,st
-        self.inst_mem[int(addr,2)] = value
+        self.inst_mem[int(addr, 2)] = value
 
     def dump(self):
         print("\n".join(self.inst_mem))

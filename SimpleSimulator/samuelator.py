@@ -1,9 +1,6 @@
 import sys
-from parsets import IMACC
-from parsets import PROGC
-from parsets import REGFLPC
-from parsets import ExecE
 
+from parsets import IMACC, PROGC, REGFLPC, ExecE
 
 MEM = IMACC(sys.stdin.read())  # Load memory from stdin
 PC = PROGC(0)  # Start from the first instruction
@@ -12,7 +9,8 @@ EE = ExecE(MEM)
 halted = False
 cycle = 1
 
-if MEM.inst_mem==["0"*16 for i in range(256)]: halted = True
+if MEM.inst_mem == ["0" * 16 for i in range(256)]:
+    halted = True
 
 while not halted:
     Instruction = MEM.getData(PC)

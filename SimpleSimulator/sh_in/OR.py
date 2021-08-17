@@ -1,27 +1,27 @@
-def OR(s ,rpc):
-   
-    rpc["FLAGS"]= "0"*16
+def OR(s, rpc):
+
+    rpc["FLAGS"] = "0" * 16
     s = s[5::]
     R_a = s[:3]
     R_b = s[3:6]
     R_c = s[6:9]
-    
+
     register = {
-        "000" : "R0",
-        "001" : "R1",
-        "010" : "R2",
-        "011" : "R3",
-        "100" : "R4",
-        "101" : "R5",
-        "110" : "R6",
+        "000": "R0",
+        "001": "R1",
+        "010": "R2",
+        "011": "R3",
+        "100": "R4",
+        "101": "R5",
+        "110": "R6",
     }
 
     R_a = register[R_a]
     R_b = register[R_b]
     R_c = register[R_c]
 
-    R_b = int(rpc[R_b],2)
-    R_c = int(rpc[R_c],2)
+    R_b = int(rpc[R_b], 2)
+    R_c = int(rpc[R_c], 2)
 
     temp1 = R_a
 
@@ -31,16 +31,17 @@ def OR(s ,rpc):
     temp = temp[2:]
 
     x = len(temp)
-    
+
     if x < 16:
         n = 16 - x
-        temp = "0"*n+temp
+        temp = "0" * n + temp
 
     rpc[temp1] = temp
 
-    rpc["PC"] = rpc["PC"]+1
+    rpc["PC"] = rpc["PC"] + 1
 
     return rpc
+
 
 # TEST
 

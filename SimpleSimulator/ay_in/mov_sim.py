@@ -1,10 +1,10 @@
 # mov reg0 $100 = 00010 000 01100100
 # mov reg0 reg1 = 00011 00000 000 001
-def mov(instruct,reg):
-    if instruct[:5]!="00010" and instruct[:5]!="00011":
+def mov(instruct, reg):
+    if instruct[:5] != "00010" and instruct[:5] != "00011":
         return "ERROR:ILLEGAL INSTRUCTION"
 
-    list = ["000","001","010","011","100","101","110","111"]
+    list = ["000", "001", "010", "011", "100", "101", "110", "111"]
     register = {
         "R0": "000",
         "R1": "001",
@@ -13,33 +13,34 @@ def mov(instruct,reg):
         "R4": "100",
         "R5": "101",
         "R6": "110",
-        "FLAGS":"111"
+        "FLAGS": "111",
     }
 
-    if instruct[:5] =="00011":
-        cx,cy=0,0
+    if instruct[:5] == "00011":
+        cx, cy = 0, 0
         for i in register:
-            if instruct[10:13]==register[i]:
-                cx=1
+            if instruct[10:13] == register[i]:
+                cx = 1
                 key1 = i
-            elif instruct[13:]==register[i]:
-                cy=1
+            elif instruct[13:] == register[i]:
+                cy = 1
                 key2 = i
-        if cx==0 or cy==0:
+        if cx == 0 or cy == 0:
             return "ERROR:INVALID REGISTER"
         reg[key1] = reg[key2]
-        reg["PC"] = reg["PC"]+1
-        reg["FLAGS"] = "0"*16
+        reg["PC"] = reg["PC"] + 1
+        reg["FLAGS"] = "0" * 16
         return reg
-    
+
     else:
         for i in register:
-            if instruct[5:8]==register[i]:
+            if instruct[5:8] == register[i]:
                 key = i
-        reg[key] = "00000000"+instruct[8:]
-        reg["PC"] = reg["PC"]+1
-        reg["FLAGS"] = "0"*16
+        reg[key] = "00000000" + instruct[8:]
+        reg["PC"] = reg["PC"] + 1
+        reg["FLAGS"] = "0" * 16
         return reg
+
 
 # test
 # rpc = {

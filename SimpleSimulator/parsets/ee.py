@@ -1,6 +1,7 @@
-from sh_in import*
-from an_in import*
-from ay_in import*
+from an_in import *
+from ay_in import *
+from sh_in import *
+
 
 class ExecE:
 
@@ -12,7 +13,7 @@ class ExecE:
     def execute(self, inst16bit, rfpc):
         if inst16bit[:5] == "00101":  # store
             self.mem.maintainvar(
-                inst16bit[8:], rfpc.get("R"+str(int(inst16bit[5:8],2)))
+                inst16bit[8:], rfpc.get("R" + str(int(inst16bit[5:8], 2)))
             )
             rfpc["PC"] += 1
             rfpc["FLAGS"] = "0000000000000000"
