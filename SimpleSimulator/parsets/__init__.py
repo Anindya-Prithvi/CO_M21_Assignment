@@ -1,3 +1,3 @@
 from .ee import ExecE
-from .imacc import IMACC, PROGC, REGFLPC
-from .imagene import IMG
+from .imagene import IMG, plot
+from .ipr import IMACC, PROGC, REGFLPC
