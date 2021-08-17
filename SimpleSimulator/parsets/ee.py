@@ -10,17 +10,20 @@ class ExecE:
     def __init__(self, memobj):
         self.mem = memobj
 
-    def execute(self, inst16bit, rfpc):
+    def execute(self, inst16bit, rfpc, img):
         if inst16bit[:5] == "00101":  # store
             self.mem.maintainvar(
                 inst16bit[8:], rfpc.get("R" + str(int(inst16bit[5:8], 2)))
             )
+            img.add(rfpc["PC"], int(inst16bit[8:], 2))
             rfpc["PC"] += 1
             rfpc["FLAGS"] = "0000000000000000"
             return False, rfpc["PC"], rfpc
         elif inst16bit[:5] == "10011":
             return True, -1, rfpc
         else:
+            if inst16bit[:5] == "00100":
+                img.add(rfpc["PC"], int(inst16bit[8:], 2))
             rfpc = ExecE.parse(inst16bit, rfpc)
             return False, rfpc["PC"], rfpc
 
