@@ -29,6 +29,7 @@ def mov(instruct,reg):
             return "ERROR:INVALID REGISTER"
         reg[key1] = reg[key2]
         reg["PC"] = reg["PC"]+1
+        reg["FLAGS"] = "0"*16
         return reg
     
     else:
@@ -37,6 +38,7 @@ def mov(instruct,reg):
                 key = i
         reg[key] = "00000000"+instruct[8:]
         reg["PC"] = reg["PC"]+1
+        reg["FLAGS"] = "0"*16
         return reg
 
 # test
