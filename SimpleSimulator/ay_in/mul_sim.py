@@ -1,6 +1,6 @@
-#mul reg0 reg1 reg2 = 00110 00 000 001 010
-def mul_instruction(instruct,reg):
-    if instruct[:5]!="00110":
+# mul reg0 reg1 reg2 = 00110 00 000 001 010
+def mul_instruction(instruct, reg):
+    if instruct[:5] != "00110":
         return "ERROR:ILLEGAL INSTRUCTION"
 
     register = {
@@ -37,16 +37,16 @@ def mul_instruction(instruct,reg):
     if cx == 0 or cy == 0 or cz == 0:
         return "ERROR:INVALID REGISTER"
 
-    x = int(reg[key2],2)
-    y = int(reg[key3],2)
-    z = x*y
-    if z>int ("1111111111111111",2):
-        a=bin(z)[2:]
-        b=len(a)-16
-        a=a[b:]
-        reg["FLAGS"]="0000000000001000"
+    x = int(reg[key2], 2)
+    y = int(reg[key3], 2)
+    z = x * y
+    if z > int("1111111111111111", 2):
+        a = bin(z)[2:]
+        b = len(a) - 16
+        a = a[b:]
+        reg["FLAGS"] = "0000000000001000"
         reg[key1] = a
-        reg["PC"] = reg["PC"]+1
+        reg["PC"] = reg["PC"] + 1
         return reg
 
     reg[key1] = format(z, "016b")

@@ -24,7 +24,7 @@ while not halted:
     # Get current instruction
     IM.imgx.append(cycle)
     IM.imgy.append(PC.PC)
-    halted, new_PC, new_regs = EE.execute(Instruction, RF.asdct(), IM)
+    halted, new_PC, new_regs = EE.execute(Instruction, RF.asdct(), IM, cycle)
     # Update RF compute new_PC
     RF.update(new_regs, new_PC)
     PC.dump()
