@@ -12,7 +12,7 @@ RF = REGFLPC()  # initialize register and flags
 EE = ExecE(MEM)
 IM = IMG()
 halted = False
-cycle = 1
+cycle = 0
 
 if MEM.inst_mem == ["0" * 16 for i in range(256)]:
     halted = True
