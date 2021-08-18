@@ -18,8 +18,7 @@ if MEM.inst_mem == ["0" * 16 for i in range(256)]:
     halted = True
 
 while not halted:
-    Instruction = MEM.getData(PC)
-    # Get current instruction
+    Instruction = MEM.getData(PC) # Get current instruction
     IM.imgx.append(cycle)
     IM.imgy.append(PC.PC)
     halted, new_PC, new_regs = EE.execute(Instruction, RF.asdct(), IM, cycle)
