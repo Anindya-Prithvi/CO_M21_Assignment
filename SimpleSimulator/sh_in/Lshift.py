@@ -20,8 +20,8 @@ def lshift(s, rpc):
     if R_a in rlist:
         temp = int(rpc[R_a], 2) << imm_a
 
-    temp = str(bin(temp))
-    temp = temp[2::]
+    temp = str(bin(temp))[2:].zfill(16)
+    temp = temp[-16::]
 
     x = len(temp)
 
