@@ -11,7 +11,7 @@ def mov(mov_instruction):
     }
     list = mov_instruction.split()
     if len(list) != 3:
-        return "ERROR: TOO MANY OPERANDS"
+        return "ERROR: INCORRECT NUMBER OF OPERANDS"
     if list[2] in register:
         c = 0
         bin_string = "0001100000"
