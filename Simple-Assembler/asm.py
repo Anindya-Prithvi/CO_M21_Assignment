@@ -1,5 +1,6 @@
 import re
 import sys
+
 from parse import parser
 
 variables = []
@@ -85,10 +86,7 @@ def labelproc(string):
 
     if len(set([i[0] for i in labels])) != len([i[0] for i in labels]):
         return (
-            "[91m"
-            + "ERROR:"
-            + "[0m"
-            + " MULTIPLE SAME NAME LABEL DECLARATION FOUND"
+            "[91m" + "ERROR:" + "[0m" + " MULTIPLE SAME NAME LABEL DECLARATION FOUND"
         )
 
     ninst = string[string.index(":") :].lstrip(":")
@@ -101,13 +99,7 @@ def labelproc(string):
 assembly = sys.stdin.read()
 
 if bool(re.match("\s*$", assembly)):
-    print(
-        "ln: 0 --> "
-        + "[91m"
-        + "ERROR:"
-        + "[0m"
-        + " EMPTY STDIN OR NO INSTRUCTION"
-    )
+    print("ln: 0 --> " + "[91m" + "ERROR:" + "[0m" + " EMPTY STDIN OR NO INSTRUCTION")
     run = False
 
 
