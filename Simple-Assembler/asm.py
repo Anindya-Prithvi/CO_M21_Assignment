@@ -14,7 +14,9 @@ def varproc(string):
     inst = string.split()
     if not (len(inst) == 2):
         return "[91m" + "ERROR:" + "[0m" + " INVALID VARIABLE DECLARATION"
-    # first part of string has var
+    # if var name is pure numbers
+    if re.match("^[0-9]+$", inst[1].strip()):
+        return "[91m" + "ERROR:" + "[0m" + " VARIABLE NAME PURELY NUMERIC"
     if re.match(".*[^A-Za-z0-9_]+", inst[1]):
         return "[91m" + "ERROR:" + "[0m" + " INVALID VARIABLE NAME"
     if inst[1] in {
@@ -38,12 +40,20 @@ def varproc(string):
         "jgt",
         "je",
         "hlt",
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6",
+        "R0",
+        "FLAGS",
     }:
         return (
             "[91m"
             + "ERROR:"
             + "[0m"
-            + f" VARIABLE NAME SAME AS MNENOMIC >> {inst[1]}"
+            + f" VARIABLE NAME SAME AS KEYWORD KNOWN IN ISA >> {inst[1].strip()}"
         )
     # second needs to be regexed
     # append to variable storage(address after instruction mem is made)
@@ -54,7 +64,9 @@ def varproc(string):
 def labelproc(string):
     # here string is always a valid label
     global labels
-    if string[: string.index(":")].strip() in {
+    if re.match("\s*[0-9]+$", string[: string.index(":")]):
+        return "[91m" + "ERROR:" + "[0m" + " LABEL NAME PURELY NUMERIC"
+    if string[: string.index(":")].lstrip() in {
         "var",
         "add",
         "sub",
@@ -75,12 +87,20 @@ def labelproc(string):
         "jgt",
         "je",
         "hlt",
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6",
+        "R0",
+        "FLAGS",
     }:
         return (
             "[91m"
             + "ERROR:"
             + "[0m"
-            + f" LABEL NAME SAME AS MNENOMIC >> {string.split()[0][:-1]}"
+            + f" LABEL NAME SAME AS KEYWORD IN ISA >> {string.split()[0][:-1]}"
         )
     labels.append([string[: string.index(":")].strip(), proc1.index(string)])
 

@@ -58,6 +58,6 @@ def parser(string, labels, variables):
     elif re.match("\s*[A-Za-z0-9]+:.*", op):
         parsed_string = "ERROR: LABEL FOUND INSIDE LABEL"
     else:
-        parsed_string = "ERROR: WRONG MNENOMIC IN " + string
+        parsed_string = "ERROR: WRONG MNENOMIC >> " + string
 
     return parsed_string
