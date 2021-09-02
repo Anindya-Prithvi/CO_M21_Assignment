@@ -1,7 +1,7 @@
 def OR(s, rpc):
 
     rpc["FLAGS"] = "0" * 16
-    s = s[5::]
+    s = s[7::]
     R_a = s[:3]
     R_b = s[3:6]
     R_c = s[6:9]
