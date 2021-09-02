@@ -20,6 +20,7 @@ class ExecE:
             rfpc["FLAGS"] = "0000000000000000"
             return False, rfpc["PC"], rfpc
         elif inst16bit[:5] == "10011":
+            rfpc["FLAGS"] = "0000000000000000"
             return True, -1, rfpc
         else:
             if inst16bit[:5] == "00100":

@@ -1,7 +1,7 @@
 def OR(str_in):
 
     arr = str_in.split()
-    output = "01011"
+    output = "0101100"
     err = ""
     if "FLAGS" in arr:
         return "ERROR: FLAGS CANNOT BE AN OPERAND HERE"
@@ -44,7 +44,6 @@ def OR(str_in):
         else:
             err = "ERROR: INVALID REGISTER CODE"
             return err
-        output = output + "00"
         return output
 
     else:

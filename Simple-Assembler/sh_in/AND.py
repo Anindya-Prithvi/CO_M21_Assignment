@@ -1,7 +1,7 @@
 def AND(str_in):
 
     arr = str_in.split()
-    output = "01100"
+    output = "0110000"
     err = ""
     if "FLAGS" in arr:
         return "ERROR: FLAGS CANNOT BE AN OPERAND HERE"
@@ -45,7 +45,6 @@ def AND(str_in):
         else:
             err = "ERROR: INVALID REGISTER CODE"
             return err
-        output = output + "00"
         return output
 
     else:
